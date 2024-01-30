@@ -1,13 +1,11 @@
 package com.loparok.model;
 
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -22,7 +20,7 @@ public class Recipe {
 
     private String title;
 
-    @
+    @ManyToOne
     private User user;
 
     private String image;
@@ -30,6 +28,8 @@ public class Recipe {
     private String description;
 
     private boolean bagitarian;
+
+    private LocalDateTime createdAt;
 
     private List<Long> likes = new ArrayList<>();
 
