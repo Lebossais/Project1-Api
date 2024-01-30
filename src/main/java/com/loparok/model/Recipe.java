@@ -27,10 +27,11 @@ public class Recipe {
 
     private String description;
 
-    private boolean bagitarian;
+    private boolean vagetarian;
 
     private LocalDateTime createdAt;
 
+    @ElementCollection
     private List<Long> likes = new ArrayList<>();
 
 }
