@@ -2,6 +2,7 @@ package com.loparok.controller;
 
 import com.loparok.model.User;
 import com.loparok.repository.UserRepository;
+import com.loparok.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -13,35 +14,47 @@ public class UserController {
     @Autowired
     private UserRepository userRepository;
 
-    @PostMapping("/users")
-    public User createUser(@RequestBody User user) throws Exception {
+    @Autowired
+    private UserService userService;
 
-        User isExist = userRepository.findByEmail(user.getEmail());
-        if(isExist!=null) {
-            throw new Exception("L'utilisateur existe déjà avec : " + user.getEmail());
-        }
+    @PostMapping("/api/user/profile")
+    public User findUserByJwt(@RequestHeader("Authorization")String jwt) throws Exception {
 
-        User savedUser = userRepository.save(user);
+        User user = userService.findUserByJwt(jwt);
 
-        return savedUser;
+        return user;
 
     }
 
-    @DeleteMapping("/users/{userId}")
-    public String deleteUser(@PathVariable Long userId) throws Exception {
+//    @PostMapping("/users")
+//    public User createUser(@RequestBody User user) throws Exception {
+//
+//        User isExist = userRepository.findByEmail(user.getEmail());
+//        if(isExist!=null) {
+//            throw new Exception("L'utilisateur existe déjà avec : " + user.getEmail());
+//        }
+//
+//        User savedUser = userRepository.save(user);
+//
+//        return savedUser;
+//
+//    }
 
-        userRepository.deleteById(userId);
+//    @DeleteMapping("/users/{userId}")
+//    public String deleteUser(@PathVariable Long userId) throws Exception {
+//
+//        userRepository.deleteById(userId);
+//
+//        return "Utilisateur correctement supprimé";
+//    }
 
-        return "Utilisateur correctement supprimé";
-    }
-
-    @GetMapping("/users")
-    public List<User> getAllUsers() throws Exception {
-
-        List<User> users = userRepository.findAll();
-
-        return users;
-    }
+//    @GetMapping("/users")
+//    public List<User> getAllUsers() throws Exception {
+//
+//        List<User> users = userRepository.findAll();
+//
+//        return users;
+//    }
 
 //    public User findByEmail(String email) throws  Exception{
 //        User user = userRepository.findByEmail(email);

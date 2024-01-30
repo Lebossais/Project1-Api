@@ -21,10 +21,10 @@ public class RecipeController {
     @Autowired
     private UserService userService;
 
-    @PostMapping("/user/{userId}")
-    public Recipe createRecipe(@RequestBody Recipe recipe, @PathVariable Long userId) throws Exception {
+    @PostMapping()
+    public Recipe createRecipe(@RequestBody Recipe recipe, @RequestHeader("Authorization") String jwt) throws Exception {
 
-        User user=userService.findUserById(userId);
+        User user=userService.findUserByJwt(jwt);
 
         Recipe createdRecipe = recipeService.createCecipe(recipe, null);
         return createdRecipe;
@@ -51,11 +51,11 @@ public class RecipeController {
         return "La recette a été supprimé";
     }
 
-    @PutMapping("/{id}/like/user/{userId}")
-    public Recipe likeRecipe(@PathVariable Long userId,
+    @PutMapping("/{id}/like")
+    public Recipe likeRecipe(@RequestHeader("Authorization") String jwt,
                              @PathVariable Long id) throws Exception {
 
-        User user = userService.findUserById(userId);
+        User user = userService.findUserByJwt(jwt);
 
         Recipe updatedRecipe = recipeService.likeRecipe(id, user);
         return updatedRecipe;
