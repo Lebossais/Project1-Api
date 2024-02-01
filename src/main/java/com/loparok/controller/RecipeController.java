@@ -26,7 +26,7 @@ public class RecipeController {
 
         User user=userService.findUserByJwt(jwt);
 
-        Recipe createdRecipe = recipeService.createCecipe(recipe, null);
+        Recipe createdRecipe = recipeService.createCecipe(recipe, user);
         return createdRecipe;
     }
 
@@ -48,7 +48,7 @@ public class RecipeController {
     public String deleteRecipe(@PathVariable Long recipeId) throws Exception {
 
         recipeService.deleteRecipe(recipeId);
-        return "La recette a été supprimé";
+        return null;
     }
 
     @PutMapping("/{id}/like")
