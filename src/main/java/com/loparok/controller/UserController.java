@@ -3,6 +3,8 @@ package com.loparok.controller;
 import com.loparok.model.User;
 import com.loparok.repository.UserRepository;
 import com.loparok.service.UserService;
+import com.loparok.service.UserServiceImplementation;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -17,7 +19,7 @@ public class UserController {
     @Autowired
     private UserService userService;
 
-    @PostMapping("/api/user/profile")
+    @GetMapping("/api/users/profile")
     public User findUserByJwt(@RequestHeader("Authorization")String jwt) throws Exception {
 
         User user = userService.findUserByJwt(jwt);
@@ -29,14 +31,14 @@ public class UserController {
 //    @PostMapping("/users")
 //    public User createUser(@RequestBody User user) throws Exception {
 //
-//        User isExist = userRepository.findByEmail(user.getEmail());
+//       User isExist = userRepository.findByEmail(user.getEmail());
 //        if(isExist!=null) {
 //            throw new Exception("L'utilisateur existe déjà avec : " + user.getEmail());
 //        }
 //
 //        User savedUser = userRepository.save(user);
 //
-//        return savedUser;
+//      return savedUser;
 //
 //    }
 

@@ -2,6 +2,7 @@ package com.loparok.configuration;
 
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
+import io.jsonwebtoken.io.Decoders;
 import io.jsonwebtoken.security.Keys;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
@@ -17,9 +18,6 @@ import javax.crypto.SecretKey;
 import java.io.IOException;
 
 public class JwtTokenValidator extends OncePerRequestFilter {
-
-
-
 
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain)

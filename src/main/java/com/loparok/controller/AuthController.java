@@ -41,7 +41,7 @@ public class AuthController {
 
         String email = user.getEmail();
         String password = user.getPassword();
-        String fullname = user.getFullName();
+        String fullname = user.getFullname();
 
         User isExistEmail = userRepository.findByEmail(email);
         if(isExistEmail!=null){
@@ -51,11 +51,11 @@ public class AuthController {
         User createdUser=new User();
         createdUser.setEmail(email);
         createdUser.setPassword(passwordEncoder.encode(password));
-        createdUser.setFullName(fullname);
+        createdUser.setFullname(fullname);
 
         User savedUser= userRepository.save(createdUser);
 
-        Authentication authentication = new UsernamePasswordAuthenticationToken(email, password);
+        Authentication authentication = new UsernamePasswordAuthenticationToken(createdUser, savedUser);
 
         SecurityContextHolder.getContext().setAuthentication(authentication);
 
