@@ -48,7 +48,7 @@ public class RecipeController {
     public String deleteRecipe(@PathVariable Long recipeId) throws Exception {
 
         recipeService.deleteRecipe(recipeId);
-        return null;
+        return "la recette a été supprimé";
     }
 
     @PutMapping("/{id}/like")
