@@ -31,5 +31,5 @@ create table if not exists Recipe
     Use_ID                  int not null,
         primary key (Use_ID)
             constraint
-        foreign key (Use_ID) references User(Use_ID) on delete restrict update restrict
+        foreign key (Use_ID) references User(Use_ID)
     );
