@@ -166,5 +166,5 @@ jobs:
           docker-compose -f docker-compose.yml build
           docker-compose -f docker-compose.yml push
 
-      # message de fin indiquant que tout s'est bien passé en console
+      # message de fin indiquant que tout s'est bien passé en logs
       - run: echo "🍏 This job's status is ${{ job.status }}."
