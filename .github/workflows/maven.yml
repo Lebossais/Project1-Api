@@ -90,7 +90,7 @@ jobs:
       - name: Charging artefact
         uses: actions/upload-artifact@v4
         with:
-          name: package.jar
+          name: artifact
           path: target/*.jar
           retention-days: 1 # Nombre de jour où le fichier reste disponible en mémoire
 
