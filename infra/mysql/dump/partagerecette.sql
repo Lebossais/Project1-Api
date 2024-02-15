@@ -29,7 +29,7 @@ create table if not exists Recipe
     Rec_title               varchar(40) not null,
     Rec_vagetarian          boolean,
     Use_ID                  int not null,
-        primary key (Use_ID)
+        primary key (Use_ID),
             constraint
-        foreign key (Use_ID) references User(Use_ID)
+        foreign key (Use_ID) references User(Use_ID) on delete cascade on update restrict
     );
