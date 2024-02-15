@@ -100,7 +100,7 @@ jobs:
   #Jobs 3
   docker-build-image-api:
     # vérifie que le déclenchement provient de la branche main
-    if: ${{ github.ref == 'refs/heads/main' }}
+    if: ${{ github.ref == 'refs/heads/master' }}
     runs-on: ubuntu-latest
     needs: # Nécessite que project-build soit fini. Cohérence
       - project-build
@@ -142,7 +142,7 @@ jobs:
   #Jobs 4
   build-and-push-container:
     # vérifie que le déclenchement provient de la branche main
-    if: ${{ github.ref == 'refs/heads/main' }}
+    if: ${{ github.ref == 'refs/heads/master' }}
     runs-on: ubuntu-latest
     needs: # Nécessite que docker-build-image-api soit fini. Cohérence
       - docker-build-image-api
