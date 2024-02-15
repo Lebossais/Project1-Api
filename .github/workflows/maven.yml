@@ -19,6 +19,7 @@ on:
     branches: [master]
     paths:
       - 'src/**'
+      - 'infra/mysql/dump/**'
       - '.github/workflows/maven.yml'
     types: [opened, synchronize, reopened]
 
